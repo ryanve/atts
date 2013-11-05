@@ -63,8 +63,8 @@
      * @param {Array|string} keys
      */
     function removeAttr(e, keys) {
-        keys = typeof keys == 'string' ? keys.match(ssv) || [] : [].concat(keys);
-        for (var i = keys.length; i--;) e[remAttr](keys[i]);
+        keys = typeof keys == 'string' ? keys.match(ssv) : [].concat(keys);
+        for (var i = keys && keys.length; i--;) e[remAttr](keys[i]);
     }
     
     /**
