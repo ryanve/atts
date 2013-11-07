@@ -1,5 +1,5 @@
 /*!
- * atts 0.0.0+201311051141
+ * atts 0.0.1+201311070728
  * https://github.com/ryanve/atts
  * MIT License 2013 Ryan Van Etten
  */
@@ -19,18 +19,18 @@
       , unbox = 'valueOf';
     
     /**
-     * Iterate (or count) an element's attributes.
+     * Count (or iterate) an element's attributes.
      * @param {Element} e element 
      * @param {(Function|number)=} fn or index, fns break as in [].some
      * @param {*=} scope defaults to `e`
-     * @return {number} iterated (or total) # attributes
+     * @return {number} #attributes (#iterations if any pass, 0 if none)
      */
     function anyAttr(e, fn, scope) {
         var a, o = e.attributes, l = o && o.length, i = 0;
         if (typeof fn != 'function') return +l || 0;
         scope = scope || e;
-        while (i < l) if (fn.call(scope, (a = o[i++]).value, a.name, a)) break;
-        return i;
+        while (i < l) if (fn.call(scope, (a = o[i++]).value, a.name, a)) return i;
+        return 0;
     }
     
     function copy(v, k) {
@@ -69,8 +69,8 @@
      * @param {Array|string} keys
      */
     function removeAttr(e, keys) {
-        keys = typeof keys == 'string' ? keys.match(ssv) || [] : [].concat(keys);
-        for (var i = keys.length; i--;) e[remAttr](keys[i]);
+        keys = typeof keys == 'string' ? keys.match(ssv) : [].concat(keys);
+        for (var i = keys && keys.length; i--;) e[remAttr](keys[i]);
     }
     
     /**

@@ -13,18 +13,18 @@
       , unbox = 'valueOf';
     
     /**
-     * Iterate (or count) an element's attributes.
+     * Count (or iterate) an element's attributes.
      * @param {Element} e element 
      * @param {(Function|number)=} fn or index, fns break as in [].some
      * @param {*=} scope defaults to `e`
-     * @return {number} iterated (or total) # attributes
+     * @return {number} #attributes (#iterations if any pass, 0 if none)
      */
     function anyAttr(e, fn, scope) {
         var a, o = e.attributes, l = o && o.length, i = 0;
         if (typeof fn != 'function') return +l || 0;
         scope = scope || e;
-        while (i < l) if (fn.call(scope, (a = o[i++]).value, a.name, a)) break;
-        return i;
+        while (i < l) if (fn.call(scope, (a = o[i++]).value, a.name, a)) return i;
+        return 0;
     }
     
     function copy(v, k) {
