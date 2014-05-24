@@ -1,21 +1,56 @@
 {
-    "name": "atts",
-    "description": "Attributes module",
-    "version": "0.0.1",
-    "homepage": "https://github.com/ryanve/atts",
-    "license": "MIT",
-    "author": "Ryan Van Etten",
-    "keywords": ["attributes", "dom", "browser"],
-    "main": "./atts.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ryanve/atts.git"
-    },
-    "devDependencies": {
-        "aok": "~1.7.0",
-        "grunt": "~0.4.1",
-        "grunt-contrib-uglify": "~0.2.4",
-        "grunt-contrib-concat": "~0.3.0",
-        "grunt-contrib-jshint": "~0.6.4"
-    }
+  "name": "atts",
+  "description": "Attributes module",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ryanve/atts",
+  "license": "MIT",
+  "author": "Ryan Van Etten",
+  "keywords": [
+    "attributes",
+    "dom",
+    "browser"
+  ],
+  "main": "./atts.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanve/atts.git"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-uglify": "^0.4.0",
+    "mocha": "^1.19.0",
+    "chai": "^1.9.1",
+    "valentine": "^2.0.2",
+    "universal": "^0.1.0"
+  },
+  "jshintConfig": {
+    "asi": true,
+    "boss": true,
+    "browser": true,
+    "debug": true,
+    "devel": true,
+    "eqnull": true,
+    "evil": true,
+    "expr": true,
+    "globals": {
+      "describe":true,
+      "it": true
+     },
+    "jquery": true,
+    "lastsemic": true,
+    "latedef": "nofunc",
+    "laxcomma": true,
+    "maxcomplexity": 15,
+    "maxerr": 10,
+    "maxlen": 115,
+    "maxparams": 4,
+    "node": true,
+    "sub": true,
+    "supernew": true,
+    "trailing": true,
+    "undef": true,
+    "unused": true,
+    "worker": true
+  }
 }
