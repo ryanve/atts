@@ -1,7 +1,7 @@
 {
   "name": "atts",
   "description": "Attributes module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/ryanve/atts",
   "license": "MIT",
   "author": "Ryan Van Etten",
@@ -16,12 +16,11 @@
     "url": "https://github.com/ryanve/atts.git"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-concat": "^0.4.0",
-    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-jshint": "^0.11.0",
     "mocha": "^1.19.0",
     "chai": "^1.9.1",
-    "valentine": "^2.0.2",
     "universal": "^0.1.0"
   },
   "jshintConfig": {
