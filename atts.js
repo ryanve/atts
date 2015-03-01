@@ -1,5 +1,5 @@
 /*!
- * atts 0.2.0+201503011917
+ * atts 0.3.0+201503012137
  * https://github.com/ryanve/atts
  * MIT License (c) 2015 Ryan Van Etten
  */
@@ -10,11 +10,10 @@
 
   var ssv = /\S+/g
     , effin = api.prototype
-    , owns = {}.hasOwnProperty
     , setAttr = 'setAttribute'
     , getAttr = 'getAttribute'
     , remAttr = 'removeAttribute'
-    , unbox = 'valueOf';
+    , owns = {}.hasOwnProperty;
     
   /**
    * @constructor
@@ -53,21 +52,34 @@
   
   function setAtts(e, o) {
     for (var n in o) owns.call(o, n) && attr(e, n, o[n]);
+    return o;
   }
-  
+
   /**
-   * @param {Element} e element
-   * @param {(string|String|Object)=} k attribute name
+   * @param {Element} e
+   * @param {Object=} o
+   */
+  function atts(e, o) {
+    return void 0 === o ? getAtts(e) : setAtts(e, o);
+  }
+
+  /**
+   * @param {*} v
+   * @return {string|undefined}
+   */
+  function normalize(v) {
+    return null == v ? void 0 : '' + v;
+  }
+
+  /**
+   * @param {Element} e
+   * @param {string=} k attribute name
    * @param {(string|boolean|null)=} v attribute value
    */  
   function attr(e, k, v) {
-    if (1 !== e.nodeType) throw new TypeError('@0');
-    if (void 0 === k && k === v) return getAtts(e);
-    k = k[unbox](); // throws on null
-    if (typeof k != 'string') setAtts(e, k);
-    else if (void 0 === v) return null == (k = e[getAttr](k)) ? v : '' + k;
+    if (void 0 === v) return normalize(e[getAttr](k));
+    if (typeof v == 'boolean') toggleAttr(e, k, v);
     else if (null === v) e[remAttr](k);
-    else if (typeof v == 'boolean') toggleAttr(e, k, v);
     else e[setAttr](k, v = '' + v);
     return v;
   }
@@ -127,7 +139,7 @@
   }
   
   api['attr'] = attr;
-  api['atts'] = getAtts;
+  api['atts'] = atts;
   api['isAttr'] = isAttr;
   api['supportAttr'] = supportAttr;
   api['anyAttr'] = anyAttr;
@@ -136,14 +148,24 @@
   
   /**
    * @this {{length:number}}
-   * @param {(string|Object)=} k
+   * @param {Object=} o
+   */  
+  effin['atts'] = function(o) {
+    return void 0 === o ? atts(this[0]) : each(this, function(e) {
+      atts(e, o);
+    });
+  };
+  
+  /**
+   * @this {{length:number}}
+   * @param {string=} k
    * @param {*=} v
    */  
   effin['attr'] = function(k, v) {
-    return void 0 !== v || k !== v && typeof(k = k[unbox]()) != 'string' ? each(this, function(e) {
+    return void 0 === v ? attr(this[0], k) : each(this, function(e) {
       var x = typeof v == 'function' ? v.call(e) : v;
       void 0 === x || attr(e, k, x);
-    }) : attr(this[0], k);
+    });
   };
   
   /**

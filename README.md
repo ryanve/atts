@@ -10,11 +10,15 @@ var atts = require('atts')
 ```
 
 ## API
-- Methods are generally compatible with [jQuery methods](http://api.jquery.com/category/manipulation/general-attributes/) of the same name
 
-#### `atts.attr(element, name?, value?)`
+#### `atts.attr(element, name, value?)`
 - Get or set attributes.
-- <b>@return</b> mixed
+- <b>@return</b> string|`undefined`
+
+#### `atts.atts(element, object?)`
+- `atts.atts(element)` get object containing all attributes
+- `atts.atts(element, object)` set attributes via object
+- <b>@return</b> object
 
 #### `atts.removeAttr(element, names)`
 - Remove attributes.
@@ -35,6 +39,14 @@ var atts = require('atts')
 #### `atts.anyAttr(element, fn?, scope?)`
 - Count or iterate <var>element</var>'s attributes.
 - <b>@return</b> number
+
+### Chain methods
+These exist on `atts.prototype` and are designed for integration into jQuery-like libs but can also be used via `atts.prototype[method].call`. Methods are generally compatible with [jQuery methods](http://api.jquery.com/category/manipulation/general-attributes/) of the same name.
+
+- `.attr(name, value?)`
+- `.atts(object?)`
+- `.removeAttr(ssv)`
+- `.toggleAttr(name, force?)`
 
 ## License
 MIT
