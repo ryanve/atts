@@ -47,6 +47,7 @@
   
   function setAtts(e, o) {
     for (var n in o) owns.call(o, n) && attr(e, n, o[n]);
+    return o;
   }
 
   /**
