@@ -4,13 +4,22 @@
 }(this, 'atts', function() {
 
   var ssv = /\S+/g
-    , api = {}
-    , effin = api['fn'] = {}
-    , owns = api.hasOwnProperty
+    , effin = api.prototype
+    , owns = {}.hasOwnProperty
     , setAttr = 'setAttribute'
     , getAttr = 'getAttribute'
     , remAttr = 'removeAttribute'
     , unbox = 'valueOf';
+    
+  /**
+   * @constructor
+   * @param {?Node=} e
+   * @return {api}
+   */
+  function api(e) {
+    if (!(this instanceof api)) return new api(e);
+    if (this.length = null == e ? 0 : 1) this[0] = e;
+  }
   
   /**
    * Count (or iterate) an element's attributes.
