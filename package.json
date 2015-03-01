@@ -1,7 +1,7 @@
 {
   "name": "atts",
-  "description": "Attributes module",
-  "version": "0.1.0",
+  "description": "DOM attributes module",
+  "version": "0.2.0",
   "homepage": "https://github.com/ryanve/atts",
   "license": "MIT",
   "author": "Ryan Van Etten",

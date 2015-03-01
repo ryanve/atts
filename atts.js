@@ -1,5 +1,5 @@
 /*!
- * atts 0.1.0+201503010605
+ * atts 0.2.0+201503011917
  * https://github.com/ryanve/atts
  * MIT License (c) 2015 Ryan Van Etten
  */
@@ -95,22 +95,26 @@
   }
   
   /**
-   * hasAttr(element, name) tests if element *has* the attribute now
-   * hasAttr(name, element) tests if element *supports* the attribute
-   * @param {string|Element} e
-   * @param {string|Node} n
-   * @return {boolean}
+   * @param {Element} e element to test on
+   * @param {string} n attribute name
+   * @return {boolean} true if element supports attribute
    */
-  function hasAttr(e, n) {
-    if (typeof e != 'string') return null != e[getAttr](n);
-    n = typeof n != 'number' ? n || 'div' : this[unbox](); // arrays 
-    n = typeof n != 'string' ? n : document.createElement(n); // tags
-    if (e in n) return true; // Case-sensitive check catches most inputs.
-    if ('class' === e) return 'className' in n;
+  function supportAttr(e, n) {
+    if (n in e) return true; // Case-sensitive check catches most inputs
+    if ('class' === n) return 'className' in e;
     // Do case-insensitive check on all enumerables to cover inputs 
     // like "contenteditable" whose property is "contentEditable"
-    for (var p in n) if (e.toLowerCase() === p.toLowerCase()) return true;
+    for (var p in e) if (n.toLowerCase() === p.toLowerCase()) return true;
     return false;
+  }
+  
+  /**
+   * @param {Element} e element to test on
+   * @param {string} n attribute name
+   * @return {boolean} true if attribute is present
+   */
+  function isAttr(e, n) {
+    return null != e[getAttr](n);
   }
 
   /** 
@@ -124,7 +128,8 @@
   
   api['attr'] = attr;
   api['atts'] = getAtts;
-  api['hasAttr'] = hasAttr;
+  api['isAttr'] = isAttr;
+  api['supportAttr'] = supportAttr;
   api['anyAttr'] = anyAttr;
   api['removeAttr'] = removeAttr;
   api['toggleAttr'] = toggleAttr;
