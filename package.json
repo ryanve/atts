@@ -1,16 +1,13 @@
 {
   "name": "atts",
   "description": "Attributes module",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "homepage": "https://github.com/ryanve/atts",
   "license": "MIT",
   "author": "Ryan Van Etten",
-  "keywords": [
-    "attributes",
-    "dom",
-    "browser"
-  ],
+  "keywords": ["attributes", "dom", "browser", "ender"],
   "main": "./atts.js",
+  "ender": "./src/ender.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/ryanve/atts.git"
@@ -33,7 +30,8 @@
     "evil": true,
     "expr": true,
     "globals": {
-      "describe":true,
+      "ender": true,
+      "describe": true,
       "it": true
      },
     "jquery": true,

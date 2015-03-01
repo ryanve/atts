@@ -1,21 +1,30 @@
 /*!
- * atts 0.0.2+201503010140
+ * atts 0.1.0+201503010605
  * https://github.com/ryanve/atts
  * MIT License (c) 2015 Ryan Van Etten
  */
 !function(root, name, make) {
-  if (typeof module != 'undefined' && module.eapis) module.eapis = make();
+  if (typeof module != 'undefined' && module.exports) module.exports = make();
   else root[name] = make();
 }(this, 'atts', function() {
 
   var ssv = /\S+/g
-    , api = {}
-    , effin = api['fn'] = {}
-    , owns = api.hasOwnProperty
+    , effin = api.prototype
+    , owns = {}.hasOwnProperty
     , setAttr = 'setAttribute'
     , getAttr = 'getAttribute'
     , remAttr = 'removeAttribute'
     , unbox = 'valueOf';
+    
+  /**
+   * @constructor
+   * @param {?Node=} e
+   * @return {api}
+   */
+  function api(e) {
+    if (!(this instanceof api)) return new api(e);
+    if (this.length = null == e ? 0 : 1) this[0] = e;
+  }
   
   /**
    * Count (or iterate) an element's attributes.

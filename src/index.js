@@ -1,5 +1,5 @@
 !function(root, name, make) {
-  if (typeof module != 'undefined' && module.eapis) module.eapis = make();
+  if (typeof module != 'undefined' && module.exports) module.exports = make();
   else root[name] = make();
 }(this, 'atts', function() {
 
