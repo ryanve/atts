@@ -1,12 +1,12 @@
 !function(root, name, make) {
-  if (typeof module != 'undefined' && module.exports) module.exports = make();
+  if (typeof module != 'undefined' && module.eapis) module.eapis = make();
   else root[name] = make();
 }(this, 'atts', function() {
 
   var ssv = /\S+/g
-    , xport = {}
-    , effin = xport['fn'] = {}
-    , owns = xport.hasOwnProperty
+    , api = {}
+    , effin = api['fn'] = {}
+    , owns = api.hasOwnProperty
     , setAttr = 'setAttribute'
     , getAttr = 'getAttribute'
     , remAttr = 'removeAttribute'
@@ -108,12 +108,12 @@
     return stack;
   }
   
-  xport['attr'] = attr;
-  xport['atts'] = getAtts;
-  xport['hasAttr'] = hasAttr;
-  xport['anyAttr'] = anyAttr;
-  xport['removeAttr'] = removeAttr;
-  xport['toggleAttr'] = toggleAttr;
+  api['attr'] = attr;
+  api['atts'] = getAtts;
+  api['hasAttr'] = hasAttr;
+  api['anyAttr'] = anyAttr;
+  api['removeAttr'] = removeAttr;
+  api['toggleAttr'] = toggleAttr;
   
   /**
    * @this {{length:number}}
@@ -144,5 +144,5 @@
     });
   };
 
-  return xport;
+  return api;
 });
