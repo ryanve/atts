@@ -47,6 +47,3 @@ These exist on `atts.prototype` and are designed for integration into jQuery-lik
 - `.atts(object?)`
 - `.removeAttr(ssv)`
 - `.toggleAttr(name, force?)`
-
-## License
-MIT

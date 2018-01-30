@@ -3,7 +3,7 @@
   "description": "DOM attributes module",
   "version": "0.3.0",
   "homepage": "https://github.com/ryanve/atts",
-  "license": "MIT",
+  "license": "CC0-1.0",
   "author": "Ryan Van Etten",
   "main": "atts.js",
   "ender": "ender.js",
