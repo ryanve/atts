@@ -1,7 +1,7 @@
 /** @preserve npm.im/atts */
 !function(root, name, make) {
-  if (typeof module != "undefined" && module.exports) module.exports = make();
-  else root[name] = make();
+  if (typeof module != "undefined" && module.exports) module.exports = make()
+  else root[name] = make()
 }(this, "atts", function() {
 
   var ssv = /\S+/g
@@ -17,8 +17,8 @@
    * @return {api}
    */
   function api(e) {
-    if (!(this instanceof api)) return new api(e);
-    if (this.length = null == e ? 0 : 1) this[0] = e;
+    if (!(this instanceof api)) return new api(e)
+    if (this.length = null == e ? 0 : 1) this[0] = e
   }
 
   /**
@@ -33,25 +33,25 @@
     var o = e.attributes
     var l = o && o.length
     var i = 0
-    if (typeof fn != "function") return +l || 0;
-    scope = scope || e;
-    while (i < l) if (fn.call(scope, (a = o[i++]).value, a.name, a)) return i;
-    return 0;
+    if (typeof fn != "function") return +l || 0
+    scope = scope || e
+    while (i < l) if (fn.call(scope, (a = o[i++]).value, a.name, a)) return i
+    return 0
   }
 
   function copy(v, k) {
-    this[k] = v;
+    this[k] = v
   }
 
   function getAtts(e) {
-    var o = {};
-    anyAttr(e, copy, o);
-    return o;
+    var o = {}
+    anyAttr(e, copy, o)
+    return o
   }
 
   function setAtts(e, o) {
-    for (var n in o) owns.call(o, n) && attr(e, n, o[n]);
-    return o;
+    for (var n in o) owns.call(o, n) && attr(e, n, o[n])
+    return o
   }
 
   /**
@@ -59,7 +59,7 @@
    * @param {Object=} o
    */
   function atts(e, o) {
-    return void 0 === o ? getAtts(e) : setAtts(e, o);
+    return void 0 === o ? getAtts(e) : setAtts(e, o)
   }
 
   /**
@@ -67,7 +67,7 @@
    * @return {string|undefined}
    */
   function normalize(v) {
-    return null == v ? void 0 : "" + v;
+    return null == v ? void 0 : "" + v
   }
 
   /**
@@ -76,11 +76,11 @@
    * @param {(string|boolean|null)=} v attribute value
    */
   function attr(e, k, v) {
-    if (void 0 === v) return normalize(e[getAttr](k));
-    if (typeof v == "boolean") toggleAttr(e, k, v);
-    else if (null === v) e[remAttr](k);
-    else e[setAttr](k, v = "" + v);
-    return v;
+    if (void 0 === v) return normalize(e[getAttr](k))
+    if (typeof v == "boolean") toggleAttr(e, k, v)
+    else if (null === v) e[remAttr](k)
+    else e[setAttr](k, v = "" + v)
+    return v
   }
 
   /**
@@ -88,8 +88,8 @@
    * @param {Array|string} keys
    */
   function removeAttr(e, keys) {
-    keys = typeof keys == "string" ? keys.match(ssv) : [].concat(keys);
-    for (var i = keys && keys.length; i--;) e[remAttr](keys[i]);
+    keys = typeof keys == "string" ? keys.match(ssv) : [].concat(keys)
+    for (var i = keys && keys.length; i--;) e[remAttr](keys[i])
   }
 
   /**
@@ -99,10 +99,10 @@
    * @return {boolean}
    */
   function toggleAttr(e, k, force) {
-    typeof force == "boolean" || (force = null == e[getAttr](k) || e[k] === false);
-    var opposite = !force;
-    force ? e[setAttr](k, "") : e[remAttr](k);
-    return e[k] === opposite ? e[k] = force : force;
+    if (typeof force != "boolean") force = null == e[getAttr](k) || e[k] === false
+    var opposite = !force
+    force ? e[setAttr](k, "") : e[remAttr](k)
+    return e[k] === opposite ? e[k] = force : force
   }
 
   /**
@@ -111,12 +111,12 @@
    * @return {boolean} true if element supports attribute
    */
   function supportAttr(e, n) {
-    if (n in e) return true; // Case-sensitive check catches most inputs
-    if ("class" === n) return "className" in e;
+    if (n in e) return true // Case-sensitive check catches most inputs
+    if ("class" === n) return "className" in e
     // Do case-insensitive check on all enumerables to cover inputs
     // like "contenteditable" whose property is "contentEditable"
-    for (var p in e) if (n.toLowerCase() === p.toLowerCase()) return true;
-    return false;
+    for (var p in e) if (n.toLowerCase() === p.toLowerCase()) return true
+    return false
   }
 
   /**
@@ -125,7 +125,7 @@
    * @return {boolean} true if attribute is present
    */
   function isAttr(e, n) {
-    return null != e[getAttr](n);
+    return null != e[getAttr](n)
   }
 
   /**
@@ -133,17 +133,17 @@
    * @param {Function} fn
    */
   function each(stack, fn) {
-    for (var l = stack.length, i = 0; i < l; i++) fn(stack[i]);
-    return stack;
+    for (var l = stack.length, i = 0; i < l; i++) fn(stack[i])
+    return stack
   }
 
-  api["attr"] = attr;
-  api["atts"] = atts;
-  api["isAttr"] = isAttr;
-  api["supportAttr"] = supportAttr;
-  api["anyAttr"] = anyAttr;
-  api["removeAttr"] = removeAttr;
-  api["toggleAttr"] = toggleAttr;
+  api["attr"] = attr
+  api["atts"] = atts
+  api["isAttr"] = isAttr
+  api["supportAttr"] = supportAttr
+  api["anyAttr"] = anyAttr
+  api["removeAttr"] = removeAttr
+  api["toggleAttr"] = toggleAttr
 
   /**
    * @this {{length:number}}
@@ -151,9 +151,9 @@
    */
   effin["atts"] = function(o) {
     return void 0 === o ? atts(this[0]) : each(this, function(e) {
-      atts(e, o);
-    });
-  };
+      atts(e, o)
+    })
+  }
 
   /**
    * @this {{length:number}}
@@ -162,10 +162,10 @@
    */
   effin["attr"] = function(k, v) {
     return void 0 === v ? attr(this[0], k) : each(this, function(e) {
-      var x = typeof v == "function" ? v.call(e) : v;
-      void 0 === x || attr(e, k, x);
-    });
-  };
+      var x = typeof v == "function" ? v.call(e) : v
+      void 0 === x || attr(e, k, x)
+    })
+  }
 
   /**
    * Remove attributes for each element in a collection.
@@ -174,15 +174,15 @@
    */
   effin["removeAttr"] = function(keys) {
     return each(this, function(e) {
-      removeAttr(e, keys);
-    });
-  };
+      removeAttr(e, keys)
+    })
+  }
 
   effin["toggleAttr"] = function(k, force) {
     return each(this, function(e) {
-      toggleAttr(e, k, force);
-    });
-  };
+      toggleAttr(e, k, force)
+    })
+  }
 
-  return api;
+  return api
 });

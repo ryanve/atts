@@ -136,7 +136,7 @@
     it("sets via function", function() {
       var k = "id", v = "a", e = doc.createElement("div")
       return expect(api(e).attr(k, function() {
-        return v;
+        return v
       }).attr(k)).to.equal(v)
     })
 
