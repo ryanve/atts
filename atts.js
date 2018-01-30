@@ -5,11 +5,11 @@
 }(this, "atts", function() {
 
   var ssv = /\S+/g
-    , effin = api.prototype
-    , setAttr = "setAttribute"
-    , getAttr = "getAttribute"
-    , remAttr = "removeAttribute"
-    , owns = {}.hasOwnProperty;
+  var effin = api.prototype
+  var setAttr = "setAttribute"
+  var getAttr = "getAttribute"
+  var remAttr = "removeAttribute"
+  var owns = {}.hasOwnProperty
 
   /**
    * @constructor
@@ -29,7 +29,10 @@
    * @return {number} #attributes (#iterations if any pass, 0 if none)
    */
   function anyAttr(e, fn, scope) {
-    var a, o = e.attributes, l = o && o.length, i = 0;
+    var a
+    var o = e.attributes
+    var l = o && o.length
+    var i = 0
     if (typeof fn != "function") return +l || 0;
     scope = scope || e;
     while (i < l) if (fn.call(scope, (a = o[i++]).value, a.name, a)) return i;

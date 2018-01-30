@@ -32,13 +32,17 @@
 
   describe("#attr", function() {
     it("sets and gets", function() {
-      var k = "id", v = "a", e = doc.createElement("div")
+      var k = "id"
+      var v = "a"
+      var e = doc.createElement("div")
       api.attr(e, k, v)
       return expect(api.attr(e, k)).to.equal(v)
     })
 
     it("normalizes to string", function() {
-      var k = "data-a", n = 1, e = doc.createElement("div")
+      var k = "data-a"
+      var n = 1
+      var e = doc.createElement("div")
       api.attr(e, k, n)
       return expect(api.attr(e, k)).to.equal(String(n))
     })
@@ -50,7 +54,8 @@
 
   describe("#atts", function() {
     it("gets and sets all", function() {
-      var e = doc.createElement("div"), o = {"id": "a", "data-a": "a"}
+      var e = doc.createElement("div")
+      var o = {"id": "a", "data-a": "a"}
       api.atts(e, o)
       return expect(api.atts(e)).to.deep.equal(o)
     })
