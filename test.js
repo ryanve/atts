@@ -63,7 +63,8 @@
 
   describe("#removeAttr", function() {
     it("removes", function() {
-      var k = "id", e = doc.createElement("div")
+      var k = "id"
+      var e = doc.createElement("div")
       e.setAttribute(k, "a")
       api.removeAttr(e, k)
       expect(e.getAttribute(k)).to.not.exist
@@ -72,13 +73,15 @@
 
   describe("#toggleAttr", function() {
     it("toggles on", function() {
-      var k = "data-a", e = doc.createElement("div")
+      var k = "data-a"
+      var e = doc.createElement("div")
       api.toggleAttr(e, k)
       expect(e.getAttribute(k)).to.equal("")
     })
 
     it("toggles off", function() {
-      var k = "data-a", e = doc.createElement("div")
+      var k = "data-a"
+      var e = doc.createElement("div")
       e.setAttribute(k, "")
       api.toggleAttr(e, k)
       expect(e.getAttribute(k)).to.not.exist
