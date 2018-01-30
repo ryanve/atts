@@ -1,3 +1,3 @@
 try {
-  require('ender').ender(require('atts').prototype, true)
+  require("ender").ender(require("atts").prototype, true)
 } catch (e) {}
