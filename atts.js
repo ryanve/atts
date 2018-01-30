@@ -1,14 +1,14 @@
 /** @preserve npm.im/atts */
 !function(root, name, make) {
-  if (typeof module != 'undefined' && module.exports) module.exports = make();
+  if (typeof module != "undefined" && module.exports) module.exports = make();
   else root[name] = make();
-}(this, 'atts', function() {
+}(this, "atts", function() {
 
   var ssv = /\S+/g
     , effin = api.prototype
-    , setAttr = 'setAttribute'
-    , getAttr = 'getAttribute'
-    , remAttr = 'removeAttribute'
+    , setAttr = "setAttribute"
+    , getAttr = "getAttribute"
+    , remAttr = "removeAttribute"
     , owns = {}.hasOwnProperty;
 
   /**
@@ -22,7 +22,7 @@
   }
 
   /**
-   * Count (or iterate) an element's attributes.
+   * Count (or iterate) an element"s attributes.
    * @param {Element} e element
    * @param {(Function|number)=} fn or index, fns break as in [].some
    * @param {*=} scope defaults to `e`
@@ -30,7 +30,7 @@
    */
   function anyAttr(e, fn, scope) {
     var a, o = e.attributes, l = o && o.length, i = 0;
-    if (typeof fn != 'function') return +l || 0;
+    if (typeof fn != "function") return +l || 0;
     scope = scope || e;
     while (i < l) if (fn.call(scope, (a = o[i++]).value, a.name, a)) return i;
     return 0;
@@ -64,7 +64,7 @@
    * @return {string|undefined}
    */
   function normalize(v) {
-    return null == v ? void 0 : '' + v;
+    return null == v ? void 0 : "" + v;
   }
 
   /**
@@ -74,9 +74,9 @@
    */
   function attr(e, k, v) {
     if (void 0 === v) return normalize(e[getAttr](k));
-    if (typeof v == 'boolean') toggleAttr(e, k, v);
+    if (typeof v == "boolean") toggleAttr(e, k, v);
     else if (null === v) e[remAttr](k);
-    else e[setAttr](k, v = '' + v);
+    else e[setAttr](k, v = "" + v);
     return v;
   }
 
@@ -85,7 +85,7 @@
    * @param {Array|string} keys
    */
   function removeAttr(e, keys) {
-    keys = typeof keys == 'string' ? keys.match(ssv) : [].concat(keys);
+    keys = typeof keys == "string" ? keys.match(ssv) : [].concat(keys);
     for (var i = keys && keys.length; i--;) e[remAttr](keys[i]);
   }
 
@@ -96,9 +96,9 @@
    * @return {boolean}
    */
   function toggleAttr(e, k, force) {
-    typeof force == 'boolean' || (force = null == e[getAttr](k) || e[k] === false);
+    typeof force == "boolean" || (force = null == e[getAttr](k) || e[k] === false);
     var opposite = !force;
-    force ? e[setAttr](k, '') : e[remAttr](k);
+    force ? e[setAttr](k, "") : e[remAttr](k);
     return e[k] === opposite ? e[k] = force : force;
   }
 
@@ -109,7 +109,7 @@
    */
   function supportAttr(e, n) {
     if (n in e) return true; // Case-sensitive check catches most inputs
-    if ('class' === n) return 'className' in e;
+    if ("class" === n) return "className" in e;
     // Do case-insensitive check on all enumerables to cover inputs
     // like "contenteditable" whose property is "contentEditable"
     for (var p in e) if (n.toLowerCase() === p.toLowerCase()) return true;
@@ -134,19 +134,19 @@
     return stack;
   }
 
-  api['attr'] = attr;
-  api['atts'] = atts;
-  api['isAttr'] = isAttr;
-  api['supportAttr'] = supportAttr;
-  api['anyAttr'] = anyAttr;
-  api['removeAttr'] = removeAttr;
-  api['toggleAttr'] = toggleAttr;
+  api["attr"] = attr;
+  api["atts"] = atts;
+  api["isAttr"] = isAttr;
+  api["supportAttr"] = supportAttr;
+  api["anyAttr"] = anyAttr;
+  api["removeAttr"] = removeAttr;
+  api["toggleAttr"] = toggleAttr;
 
   /**
    * @this {{length:number}}
    * @param {Object=} o
    */
-  effin['atts'] = function(o) {
+  effin["atts"] = function(o) {
     return void 0 === o ? atts(this[0]) : each(this, function(e) {
       atts(e, o);
     });
@@ -157,9 +157,9 @@
    * @param {string=} k
    * @param {*=} v
    */
-  effin['attr'] = function(k, v) {
+  effin["attr"] = function(k, v) {
     return void 0 === v ? attr(this[0], k) : each(this, function(e) {
-      var x = typeof v == 'function' ? v.call(e) : v;
+      var x = typeof v == "function" ? v.call(e) : v;
       void 0 === x || attr(e, k, x);
     });
   };
@@ -169,13 +169,13 @@
    * @this {{length:number}}
    * @param {Array|string} keys
    */
-  effin['removeAttr'] = function(keys) {
+  effin["removeAttr"] = function(keys) {
     return each(this, function(e) {
       removeAttr(e, keys);
     });
   };
 
-  effin['toggleAttr'] = function(k, force) {
+  effin["toggleAttr"] = function(k, force) {
     return each(this, function(e) {
       toggleAttr(e, k, force);
     });

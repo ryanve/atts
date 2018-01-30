@@ -6,7 +6,7 @@ npm install atts --save
 ```
 
 ```js
-var atts = require('atts')
+var atts = require("atts")
 ```
 
 ## API
@@ -25,7 +25,7 @@ var atts = require('atts')
 - <b>@return</b> `undefined`
 
 #### `atts.toggleAttr(element, name, state?)`
-- Toggle an attribute's presence and return boolean state.
+- Toggle an attribute"s presence and return boolean state.
 - <b>@return</b> boolean
 
 #### `atts.isAttr(element, name)`
@@ -37,7 +37,7 @@ var atts = require('atts')
 - <b>@return</b> boolean
 
 #### `atts.anyAttr(element, fn?, scope?)`
-- Count or iterate <var>element</var>'s attributes.
+- Count or iterate <var>element</var>"s attributes.
 - <b>@return</b> number
 
 ### Chain methods
