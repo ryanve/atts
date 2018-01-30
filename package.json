@@ -5,49 +5,28 @@
   "homepage": "https://github.com/ryanve/atts",
   "license": "MIT",
   "author": "Ryan Van Etten",
-  "keywords": ["attributes", "dom", "browser", "ender"],
-  "main": "./atts.js",
-  "ender": "./src/ender.js",
+  "main": "atts.js",
+  "ender": "ender.js",
+  "scripts": {
+    "pretest": "eslint .",
+    "test": "node test"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ryanve/atts.git"
   },
+  "keywords": [
+    "attr",
+    "attribute",
+    "attributes",
+    "browser",
+    "ender",
+    "dom"
+  ],
   "devDependencies": {
-    "grunt-contrib-uglify": "^0.8.0",
-    "grunt-contrib-concat": "^0.5.0",
-    "grunt-contrib-jshint": "^0.11.0",
-    "mocha": "^1.19.0",
-    "chai": "^1.9.1",
-    "universal": "^0.1.0"
-  },
-  "jshintConfig": {
-    "asi": true,
-    "boss": true,
-    "browser": true,
-    "debug": true,
-    "devel": true,
-    "eqnull": true,
-    "evil": true,
-    "expr": true,
-    "globals": {
-      "ender": true,
-      "describe": true,
-      "it": true
-     },
-    "jquery": true,
-    "lastsemic": true,
-    "latedef": "nofunc",
-    "laxcomma": true,
-    "maxcomplexity": 15,
-    "maxerr": 10,
-    "maxlen": 115,
-    "maxparams": 4,
-    "node": true,
-    "sub": true,
-    "supernew": true,
-    "trailing": true,
-    "undef": true,
-    "unused": true,
-    "worker": true
+    "chai": "^1.10.0",
+    "eslint": "^4.16.0",
+    "mocha": "^1.21.5",
+    "open": "0.0.5"
   }
 }
