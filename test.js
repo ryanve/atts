@@ -116,6 +116,11 @@
       expect(api.supportAttr(e, "class")).to.equal(true)
     })
 
+    it("detects [for] support", function() {
+      var e = doc.createElement("label")
+      expect(api.supportAttr(e, "for")).to.equal(true)
+    })
+
     it("detects support for camelCase properties", function() {
       var e = doc.createElement("div")
       expect(api.supportAttr(e, "classname")).to.equal(true)
