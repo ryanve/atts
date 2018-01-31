@@ -10,6 +10,10 @@
   var getAttr = "getAttribute"
   var remAttr = "removeAttribute"
   var owns = {}.hasOwnProperty
+  var elusive = {
+    "class": "className",
+    "for": "htmlFor"
+  }
 
   /**
    * @constructor
@@ -111,11 +115,15 @@
    * @return {boolean} true if element supports attribute
    */
   function supportAttr(e, n) {
-    if (n in e) return true // Case-sensitive check catches most inputs
-    if ("class" === n) return "className" in e
-    // Do case-insensitive check on all enumerables to cover inputs
+    // Start with optimistic case-sensitive check
+    if (n in e) return true
+    // Convert to lowercase for remaining checks
+    n = n.toLowerCase()
+    // Check elusive attributes
+    if (elusive.hasOwnProperty(n)) return elusive[n] in e
+    // Do case-insensitive check on enumerables to cover cases
     // like "contenteditable" whose property is "contentEditable"
-    for (var p in e) if (n.toLowerCase() === p.toLowerCase()) return true
+    for (var p in e) if (n === p.toLowerCase()) return true
     return false
   }
 
